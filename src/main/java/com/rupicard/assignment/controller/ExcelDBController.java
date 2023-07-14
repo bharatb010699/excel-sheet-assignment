@@ -19,7 +19,7 @@ public class ExcelDBController {
     private ExcelDBService service;
 
     @PostMapping("/saveToSheet")
-    public ResponseEntity<String> saveDetailsOnGoogleSheet
+    public ResponseEntity<String> saveDetailsOnExcelSheet
             (@RequestParam(value = "name") String name, @RequestParam(value = "mobile") String mobileNumber) {
 
         log.info("Received the following details - Name: {}, Mobile number: {}", name, mobileNumber);
