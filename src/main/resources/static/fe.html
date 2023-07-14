@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="text" id="mobile" name="mobile" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('#myForm').submit(function(e) {
+                e.preventDefault(); // Prevent form from being submitted
+
+                // Get form data
+                var name = $('#name').val();
+                var mobile = $('#mobile').val();
+
+                // Send data to backend as query parameters
+                var url = 'http://localhost:8080/db/saveToSheet?name=' + encodeURIComponent(name) + '&mobile=' + encodeURIComponent(mobile);
+                $.post(url, function(response) {
+                    // Handle backend response
+                    console.log(response);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
